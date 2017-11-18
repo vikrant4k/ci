@@ -23,6 +23,7 @@ import torch.nn as nn
 import numpy as np
 import csv
 import math
+import os.path
 
 # _logger = logging.getLogger(__name__)
 
@@ -120,6 +121,40 @@ def createCarDataList():
             
             cnt += 1
     return car_data_list
+
+class WeightData:
+    def __init__(self,u_z,w_z,u_r,w_r,u_h,w_h,s_prev,s,w_out,errors):
+        self.u_z=u_z
+        self.w_z=w_z
+        self.u_r=u_r
+        self.w_r=w_r
+        self.u_h=u_h
+        self.w_h=w_h
+        self.s_prev=s_prev
+        self.s=s
+        self.w_out=w_out
+        self.errors=errors
+        
+    def get_u_z(self):
+        return self.u_z
+    def get_w_z(self):
+        return self.w_z
+    def get_u_r(self):
+        return self.u_r
+    def get_w_r(self):
+        return self.w_r
+    def get_u_h(self):
+        return self.u_h
+    def get_w_h(self):
+        return self.w_h
+    def get_s_prev(self):
+        return self.s_prev
+    def get_s(self):
+        return self.s
+    def get_w_out(self):
+        return self.w_out
+    def get_error(self):
+        return self.errors    
 
 N, D_in, H, D_out = 64, 22, 10, 3
 dtype = torch.FloatTensor
