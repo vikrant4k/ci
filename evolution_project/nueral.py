@@ -104,7 +104,7 @@ class Network:
         return self.error
 
     def save_networks(network):
-        filename = 'data/evolution/' + str((round(time.time() * 1000))) + '.pkl'
+        filename = 'data/evolution/' + str(network.error.data[0]) + '.pkl'
         with open(filename, 'wb') as output:
             pickle.dump(network, output, pickle.HIGHEST_PROTOCOL)
 
